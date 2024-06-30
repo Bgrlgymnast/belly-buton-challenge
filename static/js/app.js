@@ -10,17 +10,16 @@ function buildMetadata(sample) {
     var result = resultArray[0];
 
     // Use d3 to select the panel with id of `#sample-metadata`
-    var panel = d3.select("#sample-metadata");
+    var panel = d3.select(`#sample-metadata`);
 
     // Use `.html("") to clear any existing metadata
     panel.html("");
 
     // Inside a loop, you will need to use d3 to append new
     // tags for each key-value in the filtered metadata.
-    Object.entries(result).forEach(([key, value])=> {
+    Object.entries(result).forEach(([key, value]) => {
       panel.append("h6").text(`${key.toUpperCase()}: ${value}`);
     });
-
   });
 }
 
@@ -32,7 +31,7 @@ function buildCharts(sample) {
     var samples = data.samples;
 
     // Filter the samples for the object with the desired sample number
-    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
     var result = resultArray[0];
 
     // Get the otu_ids, otu_labels, and sample_values
@@ -48,23 +47,22 @@ function buildCharts(sample) {
       mode: "markers",
       marker: {
         size: sample_values,
-        color: otu_ids
+        color: otu_ids,
         colorscale: 'Earth'
       }
     };
 
     var bubbleData = [bubbleTrace];
 
-    var bubblelayout = {
-      title: "Marker Size",
-      showlegend: false,
-      height: 600
-      width: 600 
+    var bubbleLayout = {
+      title: "Bacteria Culters Per Sample",
+      margin: {t:0},
+      hovermode: 'closest',
+      xaxis: {title: 'OTU ID'} 
     };
 
     // Render the Bubble Chart
-    Plotly.newPlot("bubble", bubbleData, bubblelayout);
-
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout);
 
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
 
