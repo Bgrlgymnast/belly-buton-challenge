@@ -94,7 +94,7 @@ function buildCharts(sample) {
 
     var barLayout ={
       title: "Top 10 Bacteria Cultures Found",
-      height: 500,
+      height: 400,
       width: 800,
       xaxis: {title: "Number of Bacteria"},
       margin: {t: 30, l: 150},
