@@ -61,6 +61,8 @@ function buildCharts(sample) {
 
     var bubbleLayout ={
       title: "Bacteria Cultures per Sample",
+      height: 600,
+      width: 1200,
       xaxis: {title: "OTU ID"}, 
       yaxis: {title: "Number of Bacteria"}, 
       margin: {t:30},
@@ -92,6 +94,8 @@ function buildCharts(sample) {
 
     var barLayout ={
       title: "Top 10 Bacteria Cultures Found",
+      height: 500,
+      width: 800,
       xaxis: {title: "Number of Bacteria"},
       margin: {t: 30, l: 150},
     };

@@ -55,6 +55,7 @@ Hulcr, J. et al. (2012) A Jungle in There: Bacteria in Belly Buttons are Highly 
 
 - https://plotly.com/javascript/bubble-charts/
 - https://plotly.com/javascript/horizontal-bar-charts/
+- Classmates & TA
 
 ## Copyright
 © 2024 edX Boot Camps LLC
