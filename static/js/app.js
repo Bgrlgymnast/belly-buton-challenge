@@ -9,6 +9,8 @@ function buildMetadata(sample) {
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
     var result = resultArray[0];
 
+    //console.log(result); //testing result variable
+
     // Use d3 to select the panel with id of `#sample-metadata`
     var panel = d3.select(`#sample-metadata`);
 
@@ -30,9 +32,12 @@ function buildCharts(sample) {
     // Get the samples field
     var samples = data.samples;
 
+    //console.log(samples); // testing samples variable
+
     // Filter the samples for the object with the desired sample number
     var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
     var result = resultArray[0];
+    //console.log(result);// testing result
 
     // Get the otu_ids, otu_labels, and sample_values
     var otu_ids = result.otu_ids;
@@ -54,11 +59,11 @@ function buildCharts(sample) {
 
     var bubbleData = [bubbleTrace];
 
-    var bubbleLayout = {
+    var bubbleLayout ={
       title: "Bacteria Cultures per Sample",
       xaxis: {title: "OTU ID"}, 
       yaxis: {title: "Number of Bacteria"}, 
-      margin: {t:0},
+      margin: {t:30},
       hovermode: "closest"
     };
 
@@ -68,6 +73,8 @@ function buildCharts(sample) {
     // For the Bar Chart, map the otu_ids to a list of strings for your yticks
     var yticks = otu_ids.slice(0, 10).map(id => `OTU ${id}`).reverse();
 
+    //console.log(yticks);// testing yticks
+
     // Build a Bar Chart
     // Don't forget to slice and reverse the input data appropriately
     var barTrace= {
@@ -75,7 +82,10 @@ function buildCharts(sample) {
       y: yticks,
       text: otu_labels.slice(0, 10).reverse(),
       type: "bar",
-      orientation: "h"
+      orientation: "h",
+      marker: {
+        color: "orange"
+      }
     };
 
     var barData = [barTrace]
@@ -83,7 +93,7 @@ function buildCharts(sample) {
     var barLayout ={
       title: "Top 10 Bacteria Cultures Found",
       xaxis: {title: "Number of Bacteria"},
-      margin: {t: 30, l: 150}
+      margin: {t: 30, l: 150},
     };
 
     // Render the Bar Chart
@@ -110,6 +120,7 @@ function init() {
 
     // Get the first sample from the list
     firstSample = sampleNames[0];
+    //console.log(firstSample);// testing firstSample
 
     // Build charts and metadata panel with the first sample
     buildMetadata(firstSample);
@@ -120,7 +131,8 @@ function init() {
 // Function for event listener
 function optionChanged(newSample) {
   // Build charts and metadata panel each time a new sample is selected
-
+  buildMetadata(newSample);
+  buildCharts(newSample)
 }
 
 // Initialize the dashboard
