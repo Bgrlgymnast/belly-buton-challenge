@@ -2,7 +2,8 @@
 Build and interactive dashboard to explore dataset given
 
 ## Belly Button Link
-https://bgrlgymnast.github.io/belly-buton-challenge/
+
+<https://bgrlgymnast.github.io/belly-buton-challenge/
 
 ## Instructions
 Complete the following steps:
